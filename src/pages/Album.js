@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import '../css/musiccard.css';
 
 export default class Album extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ export default class Album extends React.Component {
       loading: true,
       loadedSongs: [],
       favSongs: [],
+      artista: '',
+      aux: false,
     };
   }
 
@@ -59,44 +62,67 @@ export default class Album extends React.Component {
   };
 
   renderSongsList = () => {
-    const { favSongs, loadedSongs } = this.state;
+    const { favSongs, loadedSongs, aux } = this.state;
     return loadedSongs.map((res, index) => {
-      if (index === 0) {
-        return (
-          <div>
-            <h2 data-testid="artist-name">{res.artistName}</h2>
-            <h3 data-testid="album-name">{res.collectionName}</h3>
-          </div>
+      let retu = null;
+      if (index === 0 && !aux) {
+        const caminho = res.artworkUrl100;
+        this.setState({
+          artista: {
+            image: caminho.replace('100x100bb', '1000x1000bb'),
+            artista: res.artistName,
+            albumName: res.collectionName,
+          },
+          aux: true,
+        }, () => {});
+        retu = false;
+      } else if (index !== 0) {
+        const checked = favSongs.includes(res.trackId);
+        retu = (
+          <MusicCard
+            key={ res.trackName }
+            artistId={ res.artistId }
+            trackName={ res.trackName }
+            previewUrl={ res.previewUrl }
+            trackId={ res.trackId }
+            favSongs={ favSongs }
+            songData={ res }
+            checked={ checked }
+            removeFavSong={ this.removeFavSong }
+            appendNewFavSong={ this.appendNewFavSong }
+            startLoading={ this.startLoading }
+            stopLoading={ this.stopLoading }
+          />
         );
       }
-      const checked = favSongs.includes(res.trackId);
-      return (
-        <MusicCard
-          key={ res.trackName }
-          artistId={ res.artistId }
-          trackName={ res.trackName }
-          previewUrl={ res.previewUrl }
-          trackId={ res.trackId }
-          favSongs={ favSongs }
-          songData={ res }
-          checked={ checked }
-          removeFavSong={ this.removeFavSong }
-          appendNewFavSong={ this.appendNewFavSong }
-          startLoading={ this.startLoading }
-          stopLoading={ this.stopLoading }
-        />
-      );
+      return retu;
     });
   };
 
   renderLoadingScreen = () => <div><p>Carregando...</p></div>;
 
   render() {
-    const { loading } = this.state;
+    const { loading, artista } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        { loading ? this.renderLoadingScreen() : this.renderSongsList() }
+        <div className="musicas">
+          <div id="albumInfo">
+            <img alt="artsiaalbum" id="albumFoto" src={ artista.image } />
+            <p className="infos cima">
+              <strong>Artista: </strong>
+              { artista.artista }
+            </p>
+            <hr id="linha" />
+            <p className="infos">
+              <strong>Album: </strong>
+              { artista.albumName }
+            </p>
+          </div>
+          <div className="musica">
+            { loading ? this.renderLoadingScreen() : this.renderSongsList() }
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import '../css/musiccard.css';
 
 export default class MusicCard extends React.Component {
   constructor(props) {
@@ -45,19 +46,20 @@ export default class MusicCard extends React.Component {
   }
 
   render() {
-    const { checked, trackId, trackName, previewUrl } = this.props;
+    // const { checked, trackId, trackName, previewUrl } = this.props;
+    const { trackName, previewUrl } = this.props;
     return (
-      <>
+      <section id="audio">
         <p>{trackName}</p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          {' '}
-          {' '}
-          <code>audio</code>
-          .
+        <audio controls>
+          <track src="" kind="captions" label="english_captions" />
+          <source
+            type="audio/mp3"
+            data-testid="audio-component"
+            src={ previewUrl }
+          />
         </audio>
-        <label htmlFor="audio-component">
+        {/* <label htmlFor="audio-component">
           <input
             id="audio-component"
             type="checkbox"
@@ -66,8 +68,8 @@ export default class MusicCard extends React.Component {
             onChange={ this.handleCheck }
           />
           Favorita
-        </label>
-      </>
+        </label> */}
+      </section>
     );
   }
 }

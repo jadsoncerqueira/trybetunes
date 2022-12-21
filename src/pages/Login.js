@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Carregando from '../components/Carregando';
+import '../css/login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -42,18 +43,17 @@ class Login extends React.Component {
     if (loading) return <Carregando />;
     if (redirect) return <Redirect to="/search" />;
     return (
-      <form data-testid="page-login">
+      <form id="page-login" data-testid="page-login">
         <h1>Login</h1>
 
         <label htmlFor="nameInput">
-          Nome:
-          <br />
           <input
             onChange={ this.validationButton }
             value={ name }
             data-testid="login-name-input"
             type="text"
             id="nameInput"
+            placeholder="Nome"
           />
         </label>
 
@@ -65,6 +65,7 @@ class Login extends React.Component {
           data-testid="login-submit-button"
           type="button"
           value="Entrar"
+          id="btnInput"
         />
 
       </form>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getUser } from '../services/userAPI';
-import Carregando from './Carregando';
-import Sidebar from './Sidebar';
+import Sidebar from '../components/Sidebar';
+import CarregandoNome from './carregandoNome';
 
 class Header extends React.Component {
   constructor() {
@@ -20,12 +20,13 @@ class Header extends React.Component {
   render() {
     const { userRendered, username } = this.state;
     return (
-      <header data-testid="header-component">
+      <header id="header" data-testid="header-component">
+        <h1>TryTunes</h1>
+        <Sidebar />
         { userRendered ? (
           <div>
             <span data-testid="header-user-name">{username}</span>
-          </div>) : <Carregando />}
-        <Sidebar />
+          </div>) : <CarregandoNome />}
       </header>
     );
   }

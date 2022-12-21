@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  background-color: rgb(0, 98, 226);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* padding: 0 80px; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.308);
+}
+
+#header h1{
+  font-size: 25px;
+  color: white;
+}
+
+#header span{
+  color: white;
+}

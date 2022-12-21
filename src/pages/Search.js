@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Carregando from '../components/Carregando';
+import lupa from '../images/lupa.png';
+import '../css/Search.css';
 
 class Search extends React.Component {
   constructor() {
@@ -11,7 +13,7 @@ class Search extends React.Component {
       userRendered: false,
       buttonDisable: true,
       valor: '',
-      resultadoPesquisa: [{}],
+      resultadoPesquisa: { response: [] },
       valor2: '',
     };
   }
@@ -20,7 +22,7 @@ class Search extends React.Component {
     const { valor } = this.state;
     this.setState({
       userRendered: true,
-      resultadoPesquisa: [{}],
+      resultadoPesquisa: { response: [] },
       valor2: valor,
     });
     this.setState({
@@ -29,6 +31,7 @@ class Search extends React.Component {
       buttonDisable: true,
       resultadoPesquisa: await searchAlbumsAPI(valor),
     });
+    console.log(await searchAlbumsAPI(valor));
   }
 
   verificaInput = (event) => {
@@ -54,39 +57,62 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <input
-          value={ valor }
-          onChange={ this.verificaInput }
-          data-testid="search-artist-input"
-          type="text"
-        />
-        <input
-          value="Pesquisar"
-          onClick={ this.pesquisaMusica }
-          disabled={ buttonDisable }
-          data-testid="search-artist-button"
-          type="button"
-        />
+        <p id="paragra">Pesquisar artistas</p>
+        <div id="sea">
+          <div id="search-artist-input">
+            <input
+              value={ valor }
+              onChange={ this.verificaInput }
+              data-testid="search-artist-input"
+              id="search-artist-inputs"
+              type="text"
+              placeholder="Pesquisar"
+            />
+            <button
+              onClick={ this.pesquisaMusica }
+              disabled={ buttonDisable }
+              data-testid="search-artist-button"
+              id="search-artist-button"
+              type="button"
+            >
+              <img alt="" id="lupa" src={ lupa } />
+            </button>
+          </div>
+        </div>
         {userRendered && <Carregando />}
         {
-          resultadoPesquisa.length > 1
-          && <p>{`Resultado de álbuns de: ${valor2}`}</p>
+          resultadoPesquisa.resultCount > 1
+          && <p className="preview">{`Resultado de álbuns de: ${valor2}`}</p>
         }
         {
-          resultadoPesquisa.length === 0
-          && <p>Nenhum álbum foi encontrado</p>
+          resultadoPesquisa.resultCount === 0
+          && <p className="preview">Nenhum álbum foi encontrado</p>
         }
-        <ul>
+        <ul id="resultado">
           {
-            resultadoPesquisa.map((elem) => (
-              <li key={ elem.collectionId }>
-                <Link
-                  data-testid={ `link-to-album-${elem.collectionId}` }
-                  to={ `/album/${elem.collectionId}` }
-                >
-                  {elem.collectionName}
-                </Link>
-              </li>
+            resultadoPesquisa.response.map((elem) => (
+              <div id="colecao" key={ elem.collectionId }>
+                <img alt="" id="capa" src={ elem.artworkUrl100 } />
+                <div id="infos">
+                  <Link
+                    className="nomes"
+                    id="link2"
+                    data-testid={ `link-to-album-${elem.collectionId}` }
+                    to={ `/album/${elem.collectionId}` }
+                  >
+                    Album:
+                    {elem.collectionName}
+                  </Link>
+                  <p className="nomes">
+                    <strong>Artista: </strong>
+                    { elem.artistName }
+                  </p>
+                  <p className="nomes">
+                    <strong>Lançamento: </strong>
+                    {new Date(elem.releaseDate).getFullYear()}
+                  </p>
+                </div>
+              </div>
             ))
           }
         </ul>

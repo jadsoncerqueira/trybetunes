@@ -5,7 +5,7 @@ const searchAlbumsAPI = async (artist) => {
 
   const APIResponse = await fetch(getAlbumsAPI);
 
-  const { results } = await APIResponse.json();
+  const { results, resultCount } = await APIResponse.json();
 
   const response = results.map(
     ({
@@ -28,7 +28,7 @@ const searchAlbumsAPI = async (artist) => {
       trackCount,
     }),
   );
-  return response;
+  return {response, resultCount};
 };
 
 export default searchAlbumsAPI;
