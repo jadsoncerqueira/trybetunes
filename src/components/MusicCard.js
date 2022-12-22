@@ -46,11 +46,22 @@ export default class MusicCard extends React.Component {
   }
 
   render() {
-    // const { checked, trackId, trackName, previewUrl } = this.props;
-    const { trackName, previewUrl } = this.props;
+    const { checked, trackId, trackName, previewUrl } = this.props;
     return (
       <section id="audio">
-        <p>{trackName}</p>
+        <div id="cabeca">
+          <p>{trackName}</p>
+          <label id="label" htmlFor="audio-component">
+            <input
+              id="audio-component"
+              type="checkbox"
+              data-testid={ `checkbox-music-${trackId}` }
+              checked={ checked }
+              onChange={ this.handleCheck }
+            />
+            Favorita
+          </label>
+        </div>
         <audio controls>
           <track src="" kind="captions" label="english_captions" />
           <source
@@ -59,16 +70,6 @@ export default class MusicCard extends React.Component {
             src={ previewUrl }
           />
         </audio>
-        {/* <label htmlFor="audio-component">
-          <input
-            id="audio-component"
-            type="checkbox"
-            data-testid={ `checkbox-music-${trackId}` }
-            checked={ checked }
-            onChange={ this.handleCheck }
-          />
-          Favorita
-        </label> */}
       </section>
     );
   }
