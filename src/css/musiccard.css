@@ -1,7 +1,6 @@
-/* audio::-webkit-media-controls-panel {
-  background-color: rgb(255, 0, 0);
-  border: 1px solid red;
-} */
+audio::-webkit-media-controls-panel {
+  background-color: rgb(255, 255, 255);
+}
 
 .musicas {
   padding-top: 120px;
@@ -104,7 +103,7 @@
 
   .musica {
     justify-content: center;
-    grid-template-columns: max-content;
+    grid-template-columns: 90%;
     gap: 5px;
     position: relative;
     left: 0;

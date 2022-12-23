@@ -31,7 +31,6 @@ class Search extends React.Component {
       buttonDisable: true,
       resultadoPesquisa: await searchAlbumsAPI(valor),
     });
-    console.log(await searchAlbumsAPI(valor));
   }
 
   verificaInput = (event) => {
@@ -62,6 +61,12 @@ class Search extends React.Component {
           <div id="search-artist-input">
             <input
               value={ valor }
+              onKeyDown={ (e) => {
+                if (e.key === 'Enter') {
+                  const btn = document.querySelector('#search-artist-button');
+                  btn.click();
+                }
+              } }
               onChange={ this.verificaInput }
               data-testid="search-artist-input"
               id="search-artist-inputs"
