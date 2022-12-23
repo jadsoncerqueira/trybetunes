@@ -46,16 +46,14 @@ class Login extends React.Component {
       <form id="page-login" data-testid="page-login">
         <h1>Login</h1>
 
-        <label htmlFor="nameInput">
-          <input
-            onChange={ this.validationButton }
-            value={ name }
-            data-testid="login-name-input"
-            type="text"
-            id="nameInput"
-            placeholder="Nome"
-          />
-        </label>
+        <input
+          onChange={ this.validationButton }
+          value={ name }
+          data-testid="login-name-input"
+          type="text"
+          id="nameInput"
+          placeholder="Nome"
+        />
 
         <br />
 

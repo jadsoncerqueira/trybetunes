@@ -47,14 +47,11 @@
   border-radius: 10px;
 }
 
-/* .infos {
-  font-size: 18px;
-} */
-
 #albumInfo {
   width: 350px;
   position: fixed;
   right: 63%;
+  color: white;
 }
 
 #linha {
@@ -76,4 +73,49 @@
 #label {
   display: flex;
   gap: 5px;
+}
+
+.artistaCard {
+  font-weight: 400;
+  margin-left: 23px;
+  color: rgb(0, 98, 226);
+}
+
+@media (max-width: 600px) {
+  .musicas {
+    padding-top: 85px;
+    /* display: flex; */
+    flex-direction: column;
+    /* justify-content: center; */
+    /* gap: 20px; */
+  }
+
+  #albumFoto {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  #albumInfo {
+    width: 90%;
+    position: relative;
+    left: 0;
+    margin: 0 auto;
+  } 
+
+  .musica {
+    justify-content: center;
+    grid-template-columns: max-content;
+    gap: 5px;
+    position: relative;
+    left: 0;
+    width: 100%;
+  }
+
+  #audio {
+    width: 100%;;
+  }
+
+  audio {
+    width: 100%;
+  }
 }

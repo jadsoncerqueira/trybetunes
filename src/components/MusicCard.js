@@ -30,7 +30,8 @@ export default class MusicCard extends React.Component {
 
   handleCheck = async () => {
     const { checked } = this.state;
-    const { songData, appendNewFavSong, startLoading, stopLoading } = this.props;
+    const { songData, appendNewFavSong, startLoading, stopLoading, removeFavSong,
+    } = this.props;
     this.setState({ checked: !checked });
     if (!checked) {
       startLoading();
@@ -46,14 +47,14 @@ export default class MusicCard extends React.Component {
   }
 
   render() {
-    const { checked, trackId, trackName, previewUrl } = this.props;
+    const { checked, trackId, trackName, previewUrl, artista } = this.props;
     return (
       <section id="audio">
         <div id="cabeca">
           <p>{trackName}</p>
           <label id="label" htmlFor="audio-component">
             <input
-              id="audio-component"
+              // id="audio-component"
               type="checkbox"
               data-testid={ `checkbox-music-${trackId}` }
               checked={ checked }
@@ -62,6 +63,7 @@ export default class MusicCard extends React.Component {
             Favorita
           </label>
         </div>
+        <h5 className="artistaCard">{ artista }</h5>
         <audio controls>
           <track src="" kind="captions" label="english_captions" />
           <source

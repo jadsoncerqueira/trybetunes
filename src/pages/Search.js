@@ -57,7 +57,7 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <p id="paragra">Pesquisar artistas</p>
+        {/* <p id="paragra">Pesquisar artistas</p> */}
         <div id="sea">
           <div id="search-artist-input">
             <input
@@ -66,7 +66,7 @@ class Search extends React.Component {
               data-testid="search-artist-input"
               id="search-artist-inputs"
               type="text"
-              placeholder="Pesquisar"
+              placeholder="Pesquisar artistas"
             />
             <button
               onClick={ this.pesquisaMusica }
@@ -82,7 +82,7 @@ class Search extends React.Component {
         {userRendered && <Carregando />}
         {
           resultadoPesquisa.resultCount > 1
-          && <p className="preview">{`Resultado de álbuns de: ${valor2}`}</p>
+          && <p className="preview">{`Resultados para: ${valor2}`}</p>
         }
         {
           resultadoPesquisa.resultCount === 0

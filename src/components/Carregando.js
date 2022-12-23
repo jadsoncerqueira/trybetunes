@@ -1,12 +1,12 @@
 import React from 'react';
-import loading from "../images/loading.png"
+import loading from '../images/loading.png';
 import '../css/carregando.css';
 
 class Carregando extends React.Component {
   render() {
     return (
       <div id="loa">
-        <img src={ loading }/>
+        <img alt="" src={ loading } />
         <p>loading..</p>
       </div>
     );

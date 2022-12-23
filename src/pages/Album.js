@@ -10,10 +10,12 @@ export default class Album extends React.Component {
   constructor(props) {
     super(props);
 
+    const dados = JSON.parse(localStorage.getItem('favorite_songs'));
+
     this.state = {
       loading: true,
       loadedSongs: [],
-      favSongs: [],
+      favSongs: dados,
       artista: '',
       aux: false,
     };
@@ -22,6 +24,9 @@ export default class Album extends React.Component {
   componentDidMount() {
     this.requestSongs();
     this.initialFavSongs();
+    this.setState({
+      favSongs: JSON.parse(localStorage.getItem('favorite_songs')),
+    });
   }
 
   initialFavSongs = async () => {
@@ -31,15 +36,18 @@ export default class Album extends React.Component {
 
   appendNewFavSong = (songId) => {
     const { favSongs } = this.state;
-    this.setState({
-      favSongs: [...favSongs, songId],
-    });
+    if (!(favSongs.some((song) => song.trackId === songId))) {
+      this.setState({
+        favSongs: [...favSongs, songId],
+      });
+    }
   };
 
   removeFavSong = (songId) => {
     const { favSongs } = this.state;
-    favSongs.pop(favSongs.indexOf(songId));
-    this.setState({ favSongs });
+    const newFav = [...favSongs];
+    newFav.slice(favSongs.indexOf(songId), 1);
+    this.setState({ favSongs: newFav });
   };
 
   startLoading = () => {
@@ -77,7 +85,8 @@ export default class Album extends React.Component {
         }, () => {});
         retu = false;
       } else if (index !== 0) {
-        const checked = favSongs.includes(res.trackId);
+        const songs = JSON.parse(localStorage.getItem('favorite_songs'));
+        const checked = songs.some((song) => song.trackId === res.trackId);
         retu = (
           <MusicCard
             key={ res.trackName }
@@ -92,6 +101,7 @@ export default class Album extends React.Component {
             appendNewFavSong={ this.appendNewFavSong }
             startLoading={ this.startLoading }
             stopLoading={ this.stopLoading }
+            artista={ res.artistName }
           />
         );
       }
@@ -113,7 +123,7 @@ export default class Album extends React.Component {
               <strong>Artista: </strong>
               { artista.artista }
             </p>
-            <hr id="linha" />
+            {/* <hr id="linha" /> */}
             <p className="infos">
               <strong>Album: </strong>
               { artista.albumName }
