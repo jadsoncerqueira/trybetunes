@@ -1,8 +1,8 @@
 {
   "name": "trybetunes",
   "version": "0.1.0",
-  "homepage": "jadsoncerqueira.github.io/trybetunes/",
   "private": true,
+  "homepage": "https://jadsoncerqueira.github.io/trybetunes/",
   "engines": {
     "node": "16"
   },
