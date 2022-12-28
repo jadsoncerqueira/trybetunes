@@ -103,7 +103,7 @@ class Search extends React.Component {
                     className="nomes"
                     id="link2"
                     data-testid={ `link-to-album-${elem.collectionId}` }
-                    to={ `/album/${elem.collectionId}` }
+                    to={ `/trybetunes/album/${elem.collectionId}` }
                   >
                     Album:
                     {elem.collectionName}

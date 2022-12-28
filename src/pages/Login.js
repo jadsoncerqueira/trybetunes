@@ -41,7 +41,7 @@ class Login extends React.Component {
   render() {
     const { name, disableButton, loading, redirect } = this.state;
     if (loading) return <Carregando />;
-    if (redirect) return <Redirect to="/search" />;
+    if (redirect) return <Redirect to="/trybetunes/search" />;
     return (
       <form id="page-login" data-testid="page-login">
         <h1>Login</h1>

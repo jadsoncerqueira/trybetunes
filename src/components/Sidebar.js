@@ -6,8 +6,10 @@ class Sidebar extends React.Component {
   render() {
     return (
       <nav id="nav">
-        <Link className="link" data-testid="link-to-search" to="/search">Buscar</Link>
-        <Link className="link" data-testid="link-to-favorites" to="/favorites">
+        <Link className="link" data-testid="link-to-search" to="/trybetunes/search">
+          Buscar
+        </Link>
+        <Link className="link" data-testid="link-to-favorites" to="/trybetunes/favorites">
           Favoritos
         </Link>
       </nav>
