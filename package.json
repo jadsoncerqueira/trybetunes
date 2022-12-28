@@ -2,6 +2,7 @@
   "name": "trybetunes",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/trybetunes",
   "engines": {
     "node": "16"
   },
