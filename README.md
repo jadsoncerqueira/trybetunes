@@ -9,7 +9,7 @@ Neste projeto nos foi fornecido pela Trybe algumas funções para agilizar o des
 
 
 ### [Veja Aplicação em funcionamento](https://jadsoncerqueira.github.io/trybetunes/){:target="_blank" rel="noopener"}
-[Stackoverflow The Key](https://stackoverflow.blog/2021/03/31/the-key-copy-paste/){:target="_blank" rel="noopener"}
+<a href="http://..." target="_blank">external link</a>
 
 
 ### Técnologias usadas
