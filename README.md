@@ -7,17 +7,9 @@ Aqui o objetivo foi construir uma aplicação de preview de músicas com compone
 
 Neste projeto nos foi fornecido pela Trybe algumas funções para agilizar o desenvolvimento , mais especificamente funções de requisição da API (diretório services), isso devido à uma necessidade avaliativa da Trybe de inserir um atraso nas requisições, que eu removi para melhorar a experiência do usuário que desejar executar a aplicação.
 
-<details>
-<summary>Veja Aplicação em funcionamento</summary>
 
-![página de login](./images/preview_0.png)
+<summary>Veja Aplicação em funcionamento https://jadsoncerqueira.github.io/trybetunes/#/</summary>
 
-![página de albums](./images/preview_1.png)
-
-![página de favoritos](./images/preview_2.png)
-
-![página de edição](./images/preview_3.png)
-</details>
 
 ### Técnologias usadas
 
