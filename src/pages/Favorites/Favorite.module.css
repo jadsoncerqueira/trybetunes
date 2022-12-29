@@ -1,0 +1,11 @@
+.main {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 2);
+  padding: 1em;
+}
+
+.title {
+  text-align: center;
+}

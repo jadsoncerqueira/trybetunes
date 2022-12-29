@@ -3,9 +3,9 @@ const searchAlbumsAPI = async (artist) => {
 
   const getAlbumsAPI = `https://itunes.apple.com/search?entity=album&term=${artistNameURL}&attribute=allArtistTerm`;
 
-  const APIResponse = await fetch(getAlbumsAPI, { method: 'GET' });
+  const APIResponse = await fetch(getAlbumsAPI);
 
-  const { results, resultCount } = await APIResponse.json();
+  const { results } = await APIResponse.json();
 
   const response = results.map(
     ({
@@ -28,7 +28,7 @@ const searchAlbumsAPI = async (artist) => {
       trackCount,
     }),
   );
-  return { response, resultCount };
+  return response;
 };
 
 export default searchAlbumsAPI;

@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
+}
+
+.album_info_container {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap);
+  padding: var(--padding);
+}
+
+.album_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.album_info img {
+  height: 100px;
+  width: 100px;
+}
+
+.song_list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 2);
+}

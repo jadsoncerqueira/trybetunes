@@ -1,19 +1,62 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat:wght@400;700&display=swap');
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+  font-size: var(--medium-font-size);
+  list-style-type: none;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* outline: 1px solid red; */
+  color: var(--primary-text-color);
+  padding: 0;
+  text-decoration: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --bg-color: #2c2c2c;
+
+  --theme: #0077ff;
+
+  --primary-color: #140e14;
+
+  --secondary-color: #131313;
+
+  --primary-text-color: rgb(223, 223, 223);
+
+  --shadow-color: #26002e;
+
+  --main-font: 'Josefin Sans' , sans-serif;
+
+  --title-font: 'Montserrat' , sans-serif;
+
+  --medium-font-size: clamp(16px, calc(0.3rem + 1vw), 40px);
+
+  --gap: clamp(10px, 1.5vw, 40px);
+
+  --padding: clamp(20px, 2vw, 50px);
+
+  --cardSize: clamp(150px, 10vw, 300px);
 }
 
-.loading {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+h1 {
+  font-family: var(--title-font);
+  font-size: var(--large-font-size);
+}
+
+h2, h3 {
+  font-family: var(--title-font);
+  font-size: var(--medium-font-size);
+}
+
+.heart {
+  width: 30px;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+body {
+  background-color: var(--bg-color);
 }

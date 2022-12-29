@@ -1,0 +1,26 @@
+.main {
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--gap) / 2);
+  justify-content: space-between;
+  padding: calc(var(--padding) / 2);
+}
+
+.main span {
+  color: var(--primary-text-color);
+  overflow: auto;
+}
+
+.audio {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--gap) / 2);
+}
+
+.main label {
+  color: var(--primary-text-color);
+}

@@ -1,0 +1,58 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+}
+
+.profile {
+  align-self: center;
+  max-width: 500px;
+  min-width: 300px;
+  padding: var(--padding);
+}
+
+.image {
+  border-radius: 50%;
+  height: 100px;
+  object-fit: cover;
+  width: 100px;
+}
+
+.main p {
+  color: var(--primary-text-color);
+  max-height: 100px;
+  overflow: auto;
+}
+
+.edit {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.edit a {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  color: var(--primary-text-color);
+  font-weight: 700;
+  margin-left: 20px;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.edit a:hover {
+  transform: scale(1.1);
+}
+
+.profile_image {
+  border: 1px solid var(--shadow-color);
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.infoContainer p {
+  color: var(--theme);
+  padding: calc(var(--padding) / 2) 0;
+}
